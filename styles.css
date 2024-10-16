@@ -1,0 +1,77 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  background-color: #ecf0f1;
+  color: #333;
+}
+
+header {
+  background-color: #3498db;
+  padding: 20px;
+  text-align: center;
+}
+header .title {
+  font-size: 2.5em;
+  opacity: 0;
+}
+header nav {
+  margin-top: 10px;
+}
+header nav .nav-list {
+  list-style: none;
+  padding: 0;
+}
+header nav .nav-list li {
+  display: inline;
+  margin: 0 15px;
+}
+header nav .nav-list li a {
+  color: white;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+header nav .nav-list li a:hover {
+  color: #2ecc71;
+}
+
+section {
+  padding: 50px;
+  text-align: center;
+}
+section h2 {
+  opacity: 0;
+  transform: translateY(-20px);
+}
+section p {
+  margin-top: 10px;
+}
+section #projects .project-grid {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+section #projects .project-grid .project-card {
+  background-color: white;
+  margin: 15px;
+  padding: 20px;
+  width: 200px;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s;
+  opacity: 0;
+  transform: translateY(20px);
+  cursor: pointer;
+}
+section #projects .project-grid .project-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+}
+
+footer {
+  text-align: center;
+  padding: 20px;
+  background-color: #3498db;
+  color: white;
+}
+
+/*# sourceMappingURL=styles.css.map */
