@@ -1,77 +1,595 @@
 body {
-  font-family: Arial, sans-serif;
   margin: 0;
-  background-color: #ecf0f1;
-  color: #333;
-}
-
-header {
-  background-color: #3498db;
-  padding: 20px;
-  text-align: center;
-}
-header .title {
-  font-size: 2.5em;
-  opacity: 0;
-}
-header nav {
-  margin-top: 10px;
-}
-header nav .nav-list {
-  list-style: none;
   padding: 0;
-}
-header nav .nav-list li {
-  display: inline;
-  margin: 0 15px;
-}
-header nav .nav-list li a {
-  color: white;
-  text-decoration: none;
-  transition: color 0.3s;
-}
-header nav .nav-list li a:hover {
-  color: #2ecc71;
+  background-color: #000000;
+  font-family: "Inter", sans-serif;
 }
 
-section {
-  padding: 50px;
-  text-align: center;
+::selection {
+  background-color: #000000;
+  color: #fff;
 }
-section h2 {
-  opacity: 0;
-  transform: translateY(-20px);
+
+html {
+  scroll-behavior: smooth;
 }
-section p {
-  margin-top: 10px;
-}
-section #projects .project-grid {
+
+.container {
   display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
+  flex-direction: column;
+  padding: 40px 16%;
+  gap: 10px;
 }
-section #projects .project-grid .project-card {
-  background-color: white;
-  margin: 15px;
-  padding: 20px;
-  width: 200px;
-  border-radius: 8px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s;
-  opacity: 0;
-  transform: translateY(20px);
+
+/* NAVBAR SECTION */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #0B192C;
+  color: #fff;
+  padding: 16px 40px;
+  border-radius: 44px;
+  font-size: 18px;
+  font-weight: 500;
+  letter-spacing: -0.8px;
+}
+.navbar .pageLinks {
+  display: flex;
+  align-items: center;
+  gap: 36px;
+  color: #6A9AB0;
+}
+.navbar .pageLinks a {
+  font-size: 18px;
+  color: #6A9AB0;
+  font-weight: 600;
+  text-decoration: none;
+}
+.navbar .pageLinks a:hover {
+  color: #fff;
+  transition: ease-in-out 0.4s;
   cursor: pointer;
 }
-section #projects .project-grid .project-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+
+.nameLink {
+  color: #fff;
+  font-size: 18px;
+  font-weight: 600;
+  text-decoration: none;
+  padding: 10px 15px;
+  border-radius: 10px;
+}
+.nameLink:hover {
+  color: #fff;
+  transition: ease-in-out 0.4s;
+  cursor: pointer;
 }
 
-footer {
-  text-align: center;
+/* ABOUT SECTION */
+.about {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+.about .aboutHeading {
+  color: #ff6522;
+  font-size: 20px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  padding-bottom: 20px;
+}
+.about .nameSection {
+  flex-grow: 2;
+  background-color: #0B192C;
+  color: #6A9AB0;
+  padding: 40px;
+  border-radius: 20px;
+  font-size: 44px;
+  font-weight: 600;
+  letter-spacing: -2px;
+  width: 400px;
+}
+.about .nameSection span {
+  color: #fff;
+}
+.about .aboutSection {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 40px;
+  background-color: #0B192C;
+  color: #fff;
   padding: 20px;
-  background-color: #3498db;
-  color: white;
+  border-radius: 20px;
+  font-size: 56px;
+  font-weight: 600;
+  letter-spacing: -3px;
+}
+.about .aboutSection .myPic {
+  height: 280px;
+  border-radius: 16px;
+}
+.about .aboutSection .fieldName {
+  color: #6A9AB0;
+  font-size: 36px;
+}
+
+/* SKILLS SECTION */
+.skills {
+  display: flex;
+  gap: 10px;
+}
+.skills .skillSection {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-direction: column;
+  padding: 32px;
+  background-color: #0B192C;
+  color: #fff;
+  border-radius: 20px;
+  flex-grow: 1;
+}
+.skills .skillSection .skillHeader {
+  font-size: 44px;
+  color: #fff;
+  padding-bottom: 20px;
+  font-weight: 600;
+  letter-spacing: -1.4px;
+}
+.skills .skillSection .skillName {
+  color: #cccccc;
+  font-size: 36px;
+  font-weight: 600;
+  letter-spacing: -1px;
+}
+
+/* EXPERIENCE SECTION */
+.experience {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+.experience .experienceSection {
+  flex-grow: 1;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  width: 68%;
+  gap: 10px;
+}
+.experience .experienceSection .experienceItem {
+  background-color: #0B192C;
+  flex-grow: 1;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  border-radius: 20px;
+  padding: 32px;
+  gap: 20px;
+}
+.experience .experienceSection .experienceItem .experienceName {
+  color: #fff;
+  font-size: 32px;
+  font-weight: 600;
+}
+.experience .experienceSection .experienceItem .experienceDesc {
+  color: #d9d9d9;
+  font-size: 24px;
+  font-weight: 600;
+}
+.experience .companySection {
+  flex-grow: 1;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-direction: column;
+  background-color: #0B192C;
+  color: #fff;
+  border-radius: 20px;
+  font-weight: 600;
+  padding: 32px;
+}
+.experience .companySection .experienceheading {
+  color: #ff6522;
+  font-size: 20px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  padding-bottom: 20px;
+}
+.experience .companySection .companyName {
+  font-size: 44px;
+  padding-bottom: 20px;
+  letter-spacing: -1.4px;
+}
+.experience .companySection .companySkills {
+  display: flex;
+  gap: 10px;
+  padding-top: 10px;
+  padding-bottom: 0;
+}
+.experience .companySection .companySkills .companySkillName {
+  font-size: 18px;
+  text-align: center;
+  background-color: #ff6522;
+  padding: 8px;
+  width: 90x;
+  border-radius: 10px;
+}
+.experience .companySection .companyPeriod {
+  font-size: 24px;
+  color: #6A9AB0;
+}
+
+/* PROJECTS SECTION */
+.projects {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  background-color: #0B192C;
+  color: #fff;
+  border-radius: 20px;
+}
+.projects a {
+  text-decoration: none;
+}
+.projects .projectHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  padding: 32px;
+}
+.projects .projectHeader .aboutHeading {
+  color: #ff6522;
+  font-size: 20px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  padding-bottom: 20px;
+}
+.projects .projectLink {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  transition: all ease-in-out 0.2s;
+  object-fit: cover;
+  background-color: white;
+}
+.projects .projectLink:hover {
+  transform: scale(1.05);
+  rotate: -8deg;
+  cursor: pointer;
+}
+.projects .projectName {
+  font-size: 44px;
+  font-weight: 600;
+  color: #fff;
+  letter-spacing: -1.5px;
+  padding-bottom: 16px;
+}
+.projects .projectDesc {
+  color: #d3d3d3;
+  font-size: 22px;
+  font-weight: 500;
+  width: 94%;
+}
+.projects .projectImg {
+  width: 700px;
+  height: 400px;
+  border-radius: 20px;
+  object-fit: contain;
+}
+
+/* SOCIALS SECTION */
+.socials {
+  display: flex;
+  gap: 10px;
+}
+.socials a {
+  text-decoration: none;
+}
+.socials i {
+  margin-right: 8px;
+}
+.socials .socialLink {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #0B192C;
+  color: #fff;
+  border-radius: 36px;
+  font-size: 24px;
+  font-weight: 500;
+  flex-grow: 1;
+  padding: 16px;
+}
+.socials .socialLink:hover {
+  background-color: #ff6522;
+  transition: all ease-in-out 0.6s;
+  cursor: pointer;
+}
+.socials .socialEmailLink {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #ff6522;
+  color: #fff;
+  border-radius: 36px;
+  font-size: 24px;
+  font-weight: 500;
+  flex-grow: 1;
+  padding: 16px;
+}
+.socials .socialEmailLink i {
+  margin-right: 8px;
+}
+.socials .socialEmailLink:hover {
+  background-color: #cc3d00;
+  transition: all ease-in-out 0.4s;
+  cursor: pointer;
+}
+
+/* CONTACT SECTION */
+.contact {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  flex-direction: column;
+  background-color: #0B192C;
+  color: #fff;
+  padding: 20px;
+  border-radius: 20px;
+  height: 24dvh;
+}
+.contact .contactName {
+  font-size: 40px;
+  font-weight: 600;
+  letter-spacing: -1.6px;
+}
+.contact .contactButton {
+  text-align: center;
+  background-color: #ff6522;
+  padding: 20px;
+  border-radius: 40px;
+  width: 60%;
+}
+.contact .contactButton:hover {
+  background-color: #cc3d00;
+  transition: all ease-in-out 0.4s;
+}
+.contact .contactButton button {
+  text-decoration: none;
+  color: #fff;
+  font-size: 36px;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  letter-spacing: -1px;
+  font-weight: 500;
+}
+
+/* FOOTER SECTION */
+.footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #0B192C;
+  color: #fff;
+  padding: 16px 40px;
+  border-radius: 44px;
+  font-size: 18px;
+  font-weight: 500;
+  letter-spacing: -0.8px;
+}
+.footer .footerRight {
+  font-size: 18px;
+  color: #6A9AB0;
+}
+
+/* SMALL DESKTOP VIEW */
+@media (max-width: 1450px) {
+  .container {
+    padding: 20px 4%;
+  }
+  .pageLinks {
+    display: none;
+  }
+  .about {
+    flex-direction: column;
+  }
+  .about .nameSection {
+    padding: 32px;
+    font-size: 32px;
+    letter-spacing: -1px;
+    width: auto;
+  }
+  .about .aboutSection {
+    gap: 24px;
+    padding: 20px;
+    font-size: 40px;
+    letter-spacing: -2px;
+    text-align: center;
+    flex-direction: row;
+    justify-content: center;
+  }
+  .about .aboutSection .fieldName {
+    font-size: 28px;
+  }
+  .socials, .skills {
+    display: flex;
+    overflow: scroll;
+  }
+  .socials::-webkit-scrollbar, .skills::-webkit-scrollbar {
+    display: none; /* hide scrollbar */
+  }
+  .companySkills {
+    padding-bottom: 0;
+  }
+}
+/* MOBILE VIEW */
+@media (max-width: 600px) {
+  .container {
+    padding: 20px 2%;
+  }
+  .navbar {
+    padding: 0 28px;
+  }
+  .pageLinks {
+    display: none;
+  }
+  .about {
+    flex-direction: column;
+  }
+  .about .aboutSection {
+    gap: 12px;
+    padding: 20px;
+    font-size: 28px;
+    letter-spacing: -1px;
+    text-align: center;
+    flex-direction: column;
+  }
+  .about .aboutSection .nameSection {
+    padding: 24px;
+    font-size: 24px;
+    letter-spacing: -1px;
+    width: auto;
+  }
+  .about .aboutSection .myPic {
+    height: 220px;
+  }
+  .about .aboutSection .fieldName {
+    font-size: 22px;
+  }
+  .socials, .skills {
+    display: flex;
+    overflow: scroll;
+  }
+  .socials > a, .skills > a {
+    font-size: 20px;
+    padding: 18px;
+    border-radius: 20px;
+  }
+  .socials::-webkit-scrollbar, .skills::-webkit-scrollbar {
+    display: none; /* hide scrollbar */
+  }
+  /* PROJECTS SECTION */
+  .projects {
+    position: relative;
+    padding: 12px;
+  }
+  .projects .projectHeader {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: column;
+    padding: 20px;
+  }
+  .projects .projectHeader .projectLink {
+    position: absolute;
+    bottom: 24px;
+    right: 20px;
+    height: 40px;
+    padding: 12px;
+    z-index: 1;
+  }
+  .projects .projectHeader .projectName {
+    font-size: 28px;
+    letter-spacing: -1px;
+  }
+  .projects .projectHeader .projectDesc {
+    font-size: 18px;
+    width: 100%;
+    line-height: 1.4;
+  }
+  .projects .projectHeader .projectImg {
+    border-radius: 18px;
+  }
+  /* CONTACT SECTION */
+  .contact {
+    height: 20dvh;
+  }
+  .contact .contactName {
+    font-size: 32px;
+    letter-spacing: -1.2px;
+  }
+  .contact .contactButton {
+    width: 88%;
+  }
+  .contact .contactButton button {
+    font-size: 20px;
+    letter-spacing: 0;
+  }
+  /* EXPERIENCE SECTION */
+  .experience {
+    flex-direction: column;
+  }
+  .experience .experienceSection {
+    width: 100%;
+  }
+  .experience .experienceSection .experienceName {
+    font-size: 24px;
+  }
+  .experience .experienceSection .experienceDesc {
+    font-size: 20px;
+    text-align: justify;
+    line-height: 1.6;
+    max-width: 800px;
+  }
+  .experience .experienceSection .companyName {
+    font-size: 28px;
+    padding-bottom: 16px;
+    letter-spacing: -1px;
+  }
+  .experience .experienceSection .companySkillName {
+    font-size: 16px;
+    padding: 8px;
+    width: 68px;
+  }
+  .experience .experienceSection .companyPeriod {
+    font-size: 18px;
+  }
+  .experience .experienceSection .companySection {
+    padding: 28px;
+  }
+  .experience .experienceSection .companySkills {
+    padding-bottom: 0;
+    margin-bottom: 0;
+  }
+  /* SKILLS SECTION */
+  .skills {
+    display: flex;
+    flex-direction: column;
+  }
+  .skills .skillSection {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+    padding: 28px;
+  }
+  .skills .skillSection .skillHeader {
+    font-size: 28px;
+    padding-bottom: 0;
+    letter-spacing: -1px;
+  }
+  .skills .skillSection .skillNameSection {
+    text-align: end;
+  }
+  .skills .skillSection .skillName {
+    font-size: 22px;
+    letter-spacing: -1px;
+  }
+  /* FOOTER SECTION */
+  .footer {
+    justify-content: center;
+    flex-direction: column;
+    gap: 10px;
+    border-radius: 20px;
+  }
+  .footer .contactName {
+    font-size: 28px;
+  }
 }
 
 /*# sourceMappingURL=styles.css.map */

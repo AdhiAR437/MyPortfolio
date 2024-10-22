@@ -1,92 +1,698 @@
-$primary-color: #3498db;
-$secondary-color: #2ecc71;
-$background-color: #ecf0f1;
+$background-color: #000000;
+$text-color: #fff;
+$secondary-color: #0B192C;
+$highlight-color: #ff6522;
+$muted-color: #6A9AB0;
+$light-gray: #d9d9d9;
 
 body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    background-color: $background-color;
-    color: #333;
+  margin: 0;
+  padding: 0;
+  background-color: $background-color;
+  font-family: "Inter", sans-serif;
 }
 
-header {
-    background-color: $primary-color;
+::selection {
+  background-color: $background-color;
+  color: $text-color;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  padding: 40px 16%;
+  gap: 10px;
+}
+
+/* NAVBAR SECTION */
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: $secondary-color;
+  color: $text-color;
+  padding: 16px 40px;
+  border-radius: 44px;
+  font-size: 18px;
+  font-weight: 500;
+  letter-spacing: -0.8px;
+
+  .pageLinks {
+    display: flex;
+    align-items: center;
+    gap: 36px;
+    color: $muted-color;
+
+    a {
+      font-size: 18px;
+      color: $muted-color;
+      font-weight: 600;
+      text-decoration: none;
+
+      &:hover {
+        color: $text-color;
+        transition: ease-in-out 0.4s;
+        cursor: pointer;
+      }
+    }
+  }
+}
+.nameLink {
+    color: $text-color;  // Use a variable for text color
+    font-size: 18px;     // Set a font size
+    font-weight: 600;    // Set font weight for emphasis
+    text-decoration: none; // Remove underline from the link
+    padding: 10px 15px;  // Add some padding for better clickable area
+    border-radius: 10px;  // Slightly rounded corners
+
+    &:hover {
+        color: $text-color;
+        transition: ease-in-out 0.4s;
+        cursor: pointer;
+    }
+}
+
+
+/* ABOUT SECTION */
+
+.about {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+
+  .aboutHeading {
+    color: $highlight-color;
+    font-size: 20px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    padding-bottom: 20px;
+  }
+
+  .nameSection {
+    flex-grow: 2;
+    background-color: $secondary-color;
+    color: $muted-color;
+    padding: 40px;
+    border-radius: 20px;
+    font-size: 44px;
+    font-weight: 600;
+    letter-spacing: -2px;
+    width: 400px;
+
+    span {
+      color: $text-color;
+    }
+  }
+
+  .aboutSection {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 40px;
+    background-color: $secondary-color;
+    color: $text-color;
     padding: 20px;
-    text-align: center;
+    border-radius: 20px;
+    font-size: 56px;
+    font-weight: 600;
+    letter-spacing: -3px;
 
-    .title {
-        font-size: 2.5em;
-        opacity: 0;
+    .myPic {
+      height: 280px;
+      border-radius: 16px;
     }
 
-    nav {
-        margin-top: 10px;
-
-        .nav-list {
-            list-style: none;
-            padding: 0;
-
-            li {
-                display: inline;
-                margin: 0 15px;
-
-                a {
-                    color: white;
-                    text-decoration: none;
-                    transition: color 0.3s;
-
-                    &:hover {
-                        color: $secondary-color;
-                    }
-                }
-            }
-        }
+    .fieldName {
+      color: $muted-color;
+      font-size: 36px;
     }
+  }
 }
 
-section {
-    padding: 50px;
-    text-align: center;
+/* SKILLS SECTION */
 
-    h2 {
-        opacity: 0;
-        transform: translateY(-20px);
+.skills {
+  display: flex;
+  gap: 10px;
+
+  .skillSection {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-direction: column;
+    padding: 32px;
+    background-color: $secondary-color;
+    color: $text-color;
+    border-radius: 20px;
+    flex-grow: 1;
+
+    .skillHeader {
+      font-size: 44px;
+      color: $text-color;
+      padding-bottom: 20px;
+      font-weight: 600;
+      letter-spacing: -1.4px;
     }
 
-    p {
-        margin-top: 10px;
+    .skillName {
+      color: #cccccc;
+      font-size: 36px;
+      font-weight: 600;
+      letter-spacing: -1px;
     }
-
-    #projects {
-        .project-grid {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-
-            .project-card {
-                background-color: white;
-                margin: 15px;
-                padding: 20px;
-                width: 200px;
-                border-radius: 8px;
-                box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-                transition: transform 0.3s;
-                opacity: 0;
-                transform: translateY(20px);
-                cursor: pointer;
-
-                &:hover {
-                    transform: translateY(-5px);
-                    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
-                }
-            }
-        }
-    }
+  }
 }
 
-footer {
+/* EXPERIENCE SECTION */
+
+.experience {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+
+  .experienceSection {
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    width: 68%;
+    gap: 10px;
+
+    .experienceItem {
+      background-color: $secondary-color;
+      flex-grow: 1;
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
+      border-radius: 20px;
+      padding: 32px;
+      gap: 20px;
+
+      .experienceName {
+        color: $text-color;
+        font-size: 32px;
+        font-weight: 600;
+      }
+
+      .experienceDesc {
+        color: $light-gray;
+        font-size: 24px;
+        font-weight: 600;
+      }
+    }
+  }
+
+    .companySection {
+      flex-grow: 1;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      flex-direction: column;
+      background-color: $secondary-color;
+      color: $text-color;
+      border-radius: 20px;
+      font-weight: 600;
+      padding: 32px;
+
+      .experienceheading {
+        color: $highlight-color;
+        font-size: 20px;
+        font-weight: 600;
+        letter-spacing: 2px;
+        padding-bottom: 20px;
+      }
+
+      .companyName {
+        font-size: 44px;
+        padding-bottom: 20px;
+        letter-spacing: -1.4px;
+      }
+
+      .companySkills {
+        display: flex;
+        gap: 10px;
+        padding-top: 10px;
+        padding-bottom:0;
+
+        .companySkillName {
+          font-size: 18px;
+          text-align: center;
+          background-color: $highlight-color;
+          padding: 8px;
+          width: 90x;
+          border-radius: 10px;
+        }
+      }
+
+      .companyPeriod {
+        font-size: 24px;
+        color: $muted-color;
+      }
+    }
+  }
+
+/* PROJECTS SECTION */
+
+.projects {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  background-color: $secondary-color;
+  color: $text-color;
+  border-radius: 20px;
+
+  a {
+    text-decoration: none;
+  }
+
+  .projectHeader {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    padding: 32px;
+
+    .aboutHeading {
+      color: $highlight-color;
+      font-size: 20px;
+      font-weight: 600;
+      letter-spacing: 2px;
+      padding-bottom: 20px;
+    }
+  }
+
+    .projectLink {
+        width: 70px; // or set a specific width
+        height: 70px; // maintains aspect ratio
+        border-radius: 50%;
+        transition: all ease-in-out 0.2s;
+        object-fit: cover; // ensures the image covers the container
+        background-color: white;
+      
+        &:hover {
+          transform: scale(1.05);
+          rotate: -8deg;
+          cursor: pointer;
+        }
+      }      
+
+    .projectName {
+      font-size: 44px;
+      font-weight: 600;
+      color: $text-color;
+      letter-spacing: -1.5px;
+      padding-bottom: 16px;
+    }
+
+    .projectDesc {
+      color: #d3d3d3;
+      font-size: 22px;
+      font-weight: 500;
+      width: 94%;
+    }
+
+    .projectImg {
+        width: 700px;  // Adjust to your desired width
+        height: 400px; // Set a specific height to maintain size
+        border-radius: 20px;
+        object-fit: contain; // Ensures the image maintains its aspect ratio
+    }
+  }
+
+/* SOCIALS SECTION */
+
+.socials {
+  display: flex;
+  gap: 10px;
+
+  a {
+    text-decoration: none;
+  }
+  i {
+    margin-right: 8px; // Add space between the icon and text
+    }
+
+  .socialLink {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: $secondary-color;
+    color: $text-color;
+    border-radius: 36px;
+    font-size: 24px;
+    font-weight: 500;
+    flex-grow: 1;
+    padding: 16px;
+    &:hover {
+      background-color: $highlight-color;
+      transition: all ease-in-out 0.6s;
+      cursor: pointer;
+    }
+  }
+
+  .socialEmailLink {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: $highlight-color;
+    color: $text-color;
+    border-radius: 36px;
+    font-size: 24px;
+    font-weight: 500;
+    flex-grow: 1;
+    padding: 16px;
+    i {
+        margin-right: 8px; // Add space between the icon and text
+    }
+    &:hover {
+      background-color: #cc3d00;
+      transition: all ease-in-out 0.4s;
+      cursor: pointer;
+    }
+  }
+}
+
+/* CONTACT SECTION */
+
+.contact {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  flex-direction: column;
+  background-color: $secondary-color;
+  color: $text-color;
+  padding: 20px;
+  border-radius: 20px;
+  height: 24dvh;
+
+  .contactName {
+    font-size: 40px;
+    font-weight: 600;
+    letter-spacing: -1.6px;
+  }
+
+  .contactButton {
     text-align: center;
+    background-color: $highlight-color;
     padding: 20px;
-    background-color: $primary-color;
-    color: white;
+    border-radius: 40px;
+    width: 60%;
+
+    &:hover {
+      background-color: #cc3d00;
+      transition: all ease-in-out 0.4s;
+    }
+
+    button {
+      text-decoration: none;
+      color: $text-color;
+      font-size: 36px;
+      background-color: transparent;
+      border: none;
+      cursor: pointer;
+      letter-spacing: -1px;
+      font-weight: 500;
+    }
+  }
+}
+
+/* FOOTER SECTION */
+
+.footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: $secondary-color;
+  color: $text-color;
+  padding: 16px 40px;
+  border-radius: 44px;
+  font-size: 18px;
+  font-weight: 500;
+  letter-spacing: -0.8px;
+
+  .footerRight {
+    font-size: 18px;
+    color: $muted-color;
+  }
+}
+
+/* SMALL DESKTOP VIEW */
+
+@media (max-width: 1450px) {
+  .container {
+    padding: 20px 4%;
+  }
+
+  .pageLinks {
+    display: none;
+  }
+
+  .about {
+    flex-direction: column;
+
+    .nameSection {
+      padding: 32px;
+      font-size: 32px;
+      letter-spacing: -1px;
+      width: auto;
+    }
+
+    .aboutSection {
+      gap: 24px;
+      padding: 20px;
+      font-size: 40px;
+      letter-spacing: -2px;
+      text-align: center;
+      flex-direction: row;
+      justify-content: center;
+
+      .fieldName {
+        font-size: 28px;
+      }
+    }
+  }
+
+  .socials, .skills {
+    display: flex;
+    overflow: scroll;
+
+    &::-webkit-scrollbar {
+      display: none; /* hide scrollbar */
+    }
+  }
+
+  .companySkills {
+    padding-bottom: 0;
+  }
+}
+
+/* MOBILE VIEW */
+
+@media (max-width: 600px) {
+  .container {
+    padding: 20px 2%;
+  }
+
+  .navbar {
+    padding: 0 28px;
+  }
+
+  .pageLinks {
+    display: none;
+  }
+
+  .about {
+    flex-direction: column;
+
+    .aboutSection {
+      gap: 12px;
+      padding: 20px;
+      font-size: 28px;
+      letter-spacing: -1px;
+      text-align: center;
+      flex-direction: column;
+
+      .nameSection {
+        padding: 24px;
+        font-size: 24px;
+        letter-spacing: -1px;
+        width: auto;
+      }
+
+      .myPic {
+        height: 220px;
+      }
+
+      .fieldName {
+        font-size: 22px;
+      }
+    }
+  }
+
+  .socials, .skills {
+    display: flex;
+    overflow: scroll;
+
+    & > a {
+      font-size: 20px;
+      padding: 18px;
+      border-radius: 20px;
+    }
+
+    &::-webkit-scrollbar {
+      display: none; /* hide scrollbar */
+    }
+  }
+
+  /* PROJECTS SECTION */
+  .projects {
+    position: relative;
+    padding: 12px;
+
+    .projectHeader {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-direction: column;
+      padding: 20px;
+
+      .projectLink {
+        position: absolute;
+        bottom: 24px;
+        right: 20px;
+        height: 40px;
+        padding: 12px;
+        z-index: 1;
+      }
+
+      .projectName {
+        font-size: 28px;
+        letter-spacing: -1px;
+      }
+
+      .projectDesc {
+        font-size: 18px;
+        width: 100%;
+        line-height: 1.4;
+      }
+
+      .projectImg {
+        border-radius: 18px;
+      }
+    }
+  }
+
+  /* CONTACT SECTION */
+
+  .contact {
+    height: 20dvh;
+
+    .contactName {
+      font-size: 32px;
+      letter-spacing: -1.2px;
+    }
+
+    .contactButton {
+      width: 88%;
+
+      button {
+        font-size: 20px;
+        letter-spacing: 0;
+      }
+    }
+  }
+
+  /* EXPERIENCE SECTION */
+
+  .experience {
+    flex-direction: column;
+
+    .experienceSection {
+      width: 100%;
+
+      .experienceName {
+        font-size: 24px;
+      }
+
+      .experienceDesc {
+        font-size: 20px;
+        text-align: justify;
+        line-height: 1.6;
+        max-width: 800px; 
+      }
+
+      .companyName {
+        font-size: 28px;
+        padding-bottom: 16px;
+        letter-spacing: -1px;
+      }
+
+      .companySkillName {
+        font-size: 16px;
+        padding: 8px;
+        width: 68px;
+      }
+
+      .companyPeriod {
+        font-size: 18px;
+      }
+
+      .companySection {
+        padding: 28px;
+      }
+
+      .companySkills {
+        padding-bottom: 0;
+        margin-bottom: 0;
+      }
+    }
+  }
+
+  /* SKILLS SECTION */
+
+  .skills {
+    display: flex;
+    flex-direction: column;
+
+    .skillSection {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-direction: row;
+      padding: 28px;
+
+      .skillHeader {
+        font-size: 28px;
+        padding-bottom: 0;
+        letter-spacing: -1px;
+      }
+
+      .skillNameSection {
+        text-align: end;
+      }
+
+      .skillName {
+        font-size: 22px;
+        letter-spacing: -1px;
+      }
+    }
+  }
+
+  /* FOOTER SECTION */
+
+  .footer {
+    justify-content: center;
+    flex-direction: column;
+    gap: 10px;
+    border-radius: 20px;
+
+    .contactName {
+      font-size: 28px;
+    }
+  }
 }

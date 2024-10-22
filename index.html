@@ -1,49 +1,328 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Your Portfolio</title>
-    <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-    <header>
-        <h1 class="title">Welcome to My Portfolio</h1>
-        <nav>
-            <ul class="nav-list">
-                <li><a href="#about">About</a></li>
-                <li><a href="#projects">Projects</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-        </nav>
-    </header>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <section id="about">
-        <h2>About Me</h2>
-        <p>This is where you can write about yourself.</p>
-    </section>
+    <!-- Meta tags for social media sharing -->
+    <meta property="og:title" content="Adhi Avinash Rane - DevFolio" />
+    <meta
+      property="og:description"
+      content="This is a portfolio of my work, including both personal and production projects. Made with various technologies"
+    />
+    <meta
+      property="og:image"
+      content="	https://Adhi AvinashRane.github.io/devfolio/images/devfolioSnip.png"
+    />
+    <meta property="og:url" content="https://Adhi AvinashRane.github.io/devfolio/" />
 
-    <section id="projects">
-        <h2>My Projects</h2>
-        <div class="project-grid">
-            <div class="project-card">Project 1</div>
-            <div class="project-card">Project 2</div>
-            <div class="project-card">Project 3</div>
-            <div class="project-card">Project 4</div>
+    <!-- Fallback for non-social media platforms -->
+    <meta name="twitter:card" content="Adhi Avinash Rane" />
+    <meta name="twitter:title" content="Adhi Avinash Rane - DevFolio" />
+    <meta
+      name="twitter:description"
+      content="This is a portfolio of my work,
+    including both personal and production projects. Made with HTML, CSS, and
+    Javascript"
+    />
+    <meta
+      name="twitter:image"
+      content="https://AdhiAvinashRane.github.io/devfolio/images/devfolioSnip.png"
+    />
+    
+
+    <link rel="icon" type="image/x-icon" href="images/favicon.ico" />
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@500;700&display=swap"
+      rel="stylesheet"
+    />
+    
+
+    <title>Adhi Avinash Rane- Devfolio</title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="navbar">
+        <div class="nameLink">Adhi Avinash Rane.</div>
+        <div class="pageLinks">
+          <a href="#skills">Skills</a>
+          <a href="#experience">Experience</a>
+          <a href="#projects">Projects</a>
+          <a href="#contact">Contact</a>
         </div>
-    </section>
+      </div>
 
-    <section id="contact">
-        <h2>Contact Me</h2>
-        <p>Feel free to reach out!</p>
-    </section>
+      <div class="about">
+        <div class="aboutSection">
+          <div class="fieldSection">
+            <div>Adhi Avinash Rane.</div>
+            <div class="fieldName">Software engineer</div>
+          </div>
+          <img class="myPic" alt="photo" src="images/Toon.jpeg" />
+        </div>
+        <div class="nameSection">
+          <div class="aboutHeading">ABOUT</div>
+          <span
+            >A Software developer with expertise in ReactJS & NodeJS,
+            complemented by strong Python programming skills. </span
+          >Specialized in crafting intuitive UI/UX designs and developing
+          scalable server-side applications, with expertise in managing
+          <span>MongoDB databases.</span>
+        </div>
+      </div>
 
-    <footer>
-        <p>&copy; 2024 Your Name</p>
-    </footer>
+      <div class="socials">
+        <a class="socialEmailLink" href="mailto:adhiar98@gmail.com"
+          > <i class="fa-solid fa-envelope"></i> Email.</a
+        >
+        <a
+          class="socialLink"
+          href="https://www.linkedin.com/in/adhi-avinash-rane-45375a1bb/"
+          target="_blank"
+          ><i class="fa-brands fa-linkedin"></i>LinkedIn.</a
+        >
+        <a
+          class="socialLink"
+          href="https://github.com/AdhiAR437"
+          target="_blank"
+          ><i class="fa-brands fa-github"></i>  Github.</a
+        >
+        <a
+          class="socialLink"
+          href="https://www.instagram.com/AdhiAvinashRane/"
+          target="_blank"
+          ><i class="fa-brands fa-square-instagram"></i>instagram.</a
+        >
+        <a class="socialLink" href="AdhiARResume.pdf" download> <i class="fa-solid fa-file"></i>resume.</a>
+      </div>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/ScrollTrigger.min.js"></script>
+      <div class="skills" id="skills">
+        <div class="skillSection" id="front">
+          <div class="skillHeader">Frontend.</div>
+          <div class="skillNameSection">
+            <div class="skillName">Angular</div>
+            <div class="skillName">HTML</div>
+            <div class="skillName">JavaScript</div>
+            <div class="skillName">Sass/CSS</div>
+            <div class="skillName">Bootstrap</div>
+
+            <!-- <div class="skillName">React Native</div> -->
+          </div>
+        </div>
+        <div class="skillSection" id="back">
+          <div class="skillHeader">Backend.</div>
+          <div class="skillNameSection">
+            <div class="skillName">NodeJS</div>
+            <div class="skillName">Django</div>
+            <div class="skillName">ExpressJS</div>
+            <div class="skillName">MSSQL</div>
+            <div class="skillName">MongoDB</div>
+          </div>
+        </div>
+        <div class="skillSection" id="lang">
+          <div class="skillHeader">Languages.</div>
+          <div class="skillNameSection">
+            <div class="skillName">Python</div>
+            <div class="skillName">C#</div>
+            <div class="skillName">PHP</div>
+            <div class="skillName">Java</div>
+            <div class="skillName">SQL</div>
+          </div>
+        </div>
+        <div class="skillSection" id="lang">
+            <div class="skillHeader">Tools.</div>
+            <div class="skillNameSection">
+              <div class="skillName">Git</div>
+              <div class="skillName">Docker</div>
+              <div class="skillName">AWS</div>
+              <div class="skillName">Postman</div>
+              <div class="skillName">Swagger</div>
+            </div>
+          </div>
+      </div>
+
+      <div class="experience" id="experience">
+        <div class="companySection">
+          <div class="experienceheading">EXPERIENCE</div>
+          <div>
+            <div class="companyName">EG.</div>
+            <div class="companyPeriod">August 2024 - Present</div>
+            <div class="companySkills">
+              <div class="companySkillName">C#</div>
+              <div class="companySkillName">.Net</div>
+              <div class="companySkillName">MSSQL</div>
+            </div>
+          </div>
+          <div>
+            <div class="companyName">Freelance Developer</div>
+            <div class="companyPeriod">May 2021 - Present</div>
+            <div class="companySkills">
+              <div class="companySkillName">MERN</div>
+              <div class="companySkillName">Android</div>
+              <div class="companySkillName">SQL</div>
+            </div>
+          </div>
+          <div>
+            <div class="companyName">Mangalore Infotech</div>
+            <div class="companyPeriod">May 2023 - August 2023</div>
+            <div class="companySkills">
+              <div class="companySkillName">Python</div>
+              <div class="companySkillName">Django</div>
+              <div class="companySkillName">PostgreSQL</div>
+            </div>
+          </div>
+          <div>
+            <div class="companyName">EduSkills</div>
+            <div class="companyPeriod">July 2022 - September 2022</div>
+            <div class="companySkills">
+              <div class="companySkillName">ReactJS</div>
+              <div class="companySkillName">Python</div>
+              <div class="companySkillName">SQL</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="experienceSection">
+          <div class="experienceItem">
+            <div class="experienceName">Software Engineer</div>
+            <div class="experienceDesc">
+              <ul>
+                <li>Managed a web application platform, ensuring seamless user experiences and intuitive navigation.</li>
+                <li>Developed a standalone health and wellness application with customizable features for tracking metrics.</li>
+                <li>Led machine learning projects to analyze emotional insights from spoken language using custom datasets.</li>
+                <li>Created deep learning models for real-time analysis, merging advanced technologies with practical applications.</li>
+              </ul>
+            </div>
+          </div>
+          <div class="experienceItem">
+            <div class="experienceName">Freelance  Full Stack Developer</div>
+            <div class="experienceDesc">
+              <ul>
+                <li>Crafted dynamic web applications using the MERN stack, ensuring seamless user experiences and efficient data management.</li>
+                <li>Led machine learning projects to analyze complex datasets, employing advanced algorithms for real-time predictions.</li>
+                <li>Developed engaging Android applications with Kotlin, focusing on intuitive design and enhanced user interaction.</li>
+                <li>Merged innovative technologies with practical solutions tailored to client needs through a diverse skill set.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="projects" id="projects">
+        <div class="projectHeader">
+          <div>
+            <div class="aboutHeading">PROJECTS</div>
+            <div class="projectName">Sentiment Analysis Using Voice Recognition.</div>
+            <div class="projectDesc">
+                <p>A cutting-edge application that employs voice recognition technology to analyze the sentiment behind spoken language. This project uses a custom dataset, machine learning, and a web interface to provide real-time emotional insights.</p>
+        
+                <h2>Key Features:</h2>
+                <ul>
+                    <li><strong>Custom Dataset:</strong> Developed a tailored dataset of audio samples with labeled sentiments for effective model training.</li>
+                    <li><strong>Machine Learning Integration:</strong> Used TensorFlow to create a deep learning model that classifies emotional sentiments from vocal characteristics.</li>
+                    <li><strong>Web Application:</strong> Built a user-friendly Flask app for users to record or upload audio for immediate sentiment analysis.</li>
+                </ul>
+                
+                <p>This project demonstrates the integration of voice recognition and sentiment analysis, showcasing the potential of machine learning in understanding human emotions.</p>
+            </div>
+          </div>
+          <a
+            href="https://github.com/AdhiAR437/Sentiment-Analysis-Using-Voice-Recognition"
+            target="_blank"
+          >
+            <img class="projectLink" src="images/link.png" alt="link"
+          /></a>
+        </div>
+        <a
+          href="https://github.com/AdhiAR437/Sentiment-Analysis-Using-Voice-Recognition"
+          target="_blank"
+        >
+          <img
+            class="projectImg"
+            src="images\SentimentAnalysisUsingVoiceRecognition.png"
+            alt="Sentiment Analysis Using Voice Recognition"
+        /></a>
+      </div>
+
+      <div class="projects" id="projects">
+        <div class="projectHeader">
+          <div>
+            <div class="projectName">EGBNB - An Innovative Rental Platform</div>
+            <div class="projectDesc">
+                <p>EGBNB is a modern web application inspired by Airbnb, designed to connect hosts and guests in a seamless rental experience. Built using C#, MS SQL Server, Razor, HTML, and SASS, this platform offers a robust solution for short-term rental management.</p>
+
+                <h2>Key Features:</h2>
+                <ul>
+                    <li><strong>User-Friendly Interface:</strong> Developed a responsive web interface using Razor and SASS, providing a smooth user experience for both hosts and guests.</li>
+                    <li><strong>Robust Property Management:</strong> Utilized C# and MS SQL Server for a reliable backend, allowing hosts to create and manage property listings with images, descriptions, and secure booking options.</li>
+                    <li><strong>Comprehensive Search and Review System:</strong> Implemented advanced search functionality for guests to find accommodations based on location and price, along with a review system to enhance user decision-making.</li>
+                </ul>
+
+                <p>This project exemplifies the power of web technologies in creating a comprehensive rental solution, emphasizing user experience and efficient property management.</p>
+            </div>
+
+          </div>
+          <a href="https://github.com/aaronsharon/EG-Frontend" target="_blank">
+            <img class="projectLink" src="images/link.png" alt="link"
+          /></a>
+        </div>
+        <a href="https://github.com/aaronsharon/EG-Frontend" target="_blank">
+          <img class="projectImg" src="images/Egbnb.png" alt="Book shop"
+        /></a>
+      </div>
+
+      <div class="projects" id="projects">
+        <div class="projectHeader">
+          <div>
+            <div class="projectName">NutriFit - Diet Planning and Health Tools App</div>
+            <div class="projectDesc">
+                <p>NutriFit is a standalone desktop application designed to help users manage their diet and health goals effectively. Developed using Python, PyQt, and SQLite, this app provides a comprehensive set of tools for personalized diet planning and health tracking.</p>
+
+                <h2>Key Features:</h2>
+                <ul>
+                    <li><strong>Personalized Diet Planning:</strong> Users can create customized meal plans based on their dietary preferences, health goals, and nutritional needs.</li>
+                    <li><strong>Health Tracking Tools:</strong> Integrated features for tracking daily calorie intake, macronutrients, and exercise routines, providing users with valuable insights into their health.</li>
+                    <li><strong>User-Friendly Interface:</strong> Built with PyQt, the application offers an intuitive interface that enhances user experience, making it easy to navigate through various functionalities.</li>
+                </ul>
+
+                <p>This project showcases the potential of desktop applications in promoting healthier lifestyles through personalized diet management and user engagement.</p>
+            </div>
+          </div>
+          <a
+            href="https://github.com/AdhiAR437/Nutrifit"
+            target="_blank"
+          >
+            <img class="projectLink" src="images/link.png" alt="link"
+          /></a>
+        </div>
+        <a
+          href="https://github.com/AdhiAR437/Nutrifit"
+          target="_blank"
+        >
+          <img class="projectImg" src="images/nutrifitdesktop.webp" alt="Book shop"
+        /></a>
+      </div>
+
+      <div class="contact" id="contact">
+        <div class="contactName">Let's get started.</div>
+
+        <a class="contactButton" href="mailto:adhiar98@gmail.com"
+          ><button> adhiar98@gmail.com</button></a
+        >
+      </div>
+
+      <div class="footer">
+        <div class="nameLink">Adhi Avinash Rane.</div>
+        <div class="footerRight">all rights reserved © 2024</div>
+      </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.3/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.3/ScrollTrigger.min.js"></script>
+
     <script src="script.js"></script>
-</body>
+  </body>
 </html>
