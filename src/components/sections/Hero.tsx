@@ -93,7 +93,7 @@ export function Hero() {
         <div className="hero-visual">
           <HeroVisual />
         </div>
-        <a className="scroll-cue" href="#profile" aria-label="Continue to recruiter profile">
+        <a className="scroll-cue" href="#building" aria-label="Continue to currently building">
           <span>Explore chapters</span>
           <ArrowDown />
         </a>

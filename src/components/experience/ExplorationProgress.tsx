@@ -5,6 +5,7 @@ import { portfolio } from '../../data/portfolio'
 
 const sectionAchievement: Record<string, string> = {
   home: 'first-look',
+  building: 'builders-desk',
   experience: 'career-journey',
   skills: 'full-stack-explorer',
   contact: 'lets-connect',
@@ -54,7 +55,7 @@ export function ExplorationProgress() {
   }, [sectionIds, unlock])
 
   useEffect(() => {
-    if (visited.length === sectionIds.length) unlock('profile-complete')
+    if (visited.length === sectionIds.length) unlock('stream-complete')
   }, [sectionIds.length, unlock, visited.length])
 
   const progress = Math.round((visited.length / sectionIds.length) * 100)

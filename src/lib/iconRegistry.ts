@@ -17,6 +17,7 @@ import { FaAws, FaLinkedinIn, FaMicrosoft } from 'react-icons/fa6'
 import {
   SiDocker,
   SiDotnet,
+  SiFlask,
   SiGit,
   SiGithub,
   SiGithubactions,
@@ -26,9 +27,13 @@ import {
   SiPostgresql,
   SiPostman,
   SiPython,
+  SiQt,
   SiReact,
+  SiSqlite,
   SiTailwindcss,
   SiTypescript,
+  SiVite,
+  SiBootstrap,
 } from 'react-icons/si'
 import { VscAzure, VscCode } from 'react-icons/vsc'
 
@@ -45,6 +50,11 @@ export type TechnologyIconKey =
   | 'typescript'
   | 'javascript'
   | 'python'
+  | 'vite'
+  | 'flask'
+  | 'sqlite'
+  | 'bootstrap'
+  | 'pyqt'
   | 'html'
   | 'css'
   | 'tailwind'
@@ -88,6 +98,11 @@ export const technologyIcons: Record<TechnologyIconKey, IconDefinition> = {
   typescript: { component: SiTypescript, label: 'TypeScript', color: '#60a5fa' },
   javascript: { component: SiJavascript, label: 'JavaScript', color: '#facc15' },
   python: { component: SiPython, label: 'Python', color: '#facc15' },
+  vite: { component: SiVite, label: 'Vite', color: '#a78bfa' },
+  flask: { component: SiFlask, label: 'Flask', color: '#f8fafc' },
+  sqlite: { component: SiSqlite, label: 'SQLite', color: '#60a5fa' },
+  bootstrap: { component: SiBootstrap, label: 'Bootstrap', color: '#a78bfa' },
+  pyqt: { component: SiQt, label: 'PyQt', color: '#84cc16' },
   html: { component: SiHtml5, label: 'HTML5', color: '#f97316' },
   css: { monogram: 'CSS', label: 'CSS', color: '#38bdf8' },
   tailwind: { component: SiTailwindcss, label: 'Tailwind CSS', color: '#22d3ee' },
@@ -129,4 +144,5 @@ export const genericContentIcons = {
   education: Braces,
   project: Sparkles,
   award: Sparkles,
+  workflow: Workflow,
 } as const

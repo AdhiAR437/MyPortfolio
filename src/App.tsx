@@ -8,10 +8,10 @@ import { Hero } from './components/sections/Hero'
 import {
   Contact,
   ContinueExploring,
+  CurrentlyBuilding,
   Experience,
   Journey,
   Projects,
-  RecruiterSnapshot,
   Skills,
 } from './components/sections/Sections'
 import { portfolio } from './data/portfolio'
@@ -56,7 +56,7 @@ export default function App() {
       <main id="main-content">
         <Hero />
         <ContinueExploring />
-        <RecruiterSnapshot />
+        <CurrentlyBuilding />
         <Experience />
         <Skills />
         <Projects />

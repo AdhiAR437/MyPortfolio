@@ -12,6 +12,7 @@ export type IconName =
   | 'education'
   | 'project'
   | 'award'
+  | 'workflow'
 
 export interface NavigationItem {
   id: string
@@ -52,7 +53,8 @@ export interface Project {
   title: string
   shortTitle: string
   category: string
-  status: 'Completed' | 'Prototype' | 'In development' | 'Professional'
+  type?: 'Web Application' | 'Desktop Application'
+  status?: 'Completed' | 'Prototype' | 'In development' | 'Professional'
   featured: boolean
   description: string
   built: string
@@ -104,6 +106,15 @@ export interface TechnologySpec {
   iconKey: TechnologyIconKey
 }
 
+export interface CurrentFocusItem {
+  title: string
+  description: string
+  whyItMatters: string
+  status: 'In Development' | 'Current Focus' | 'Learning'
+  iconKey: TechnologyIconKey
+  technologies: string[]
+}
+
 const technologyCatalog: TechnologySpec[] = [
   { name: 'C#', iconKey: 'csharp' },
   { name: '.NET', iconKey: 'dotnet' },
@@ -117,6 +128,12 @@ const technologyCatalog: TechnologySpec[] = [
   { name: 'JavaScript', iconKey: 'javascript' },
   { name: 'TypeScript', iconKey: 'typescript' },
   { name: 'Python', iconKey: 'python' },
+  { name: 'Vite', iconKey: 'vite' },
+  { name: 'Flask', iconKey: 'flask' },
+  { name: 'SQLite', iconKey: 'sqlite' },
+  { name: 'Bootstrap', iconKey: 'bootstrap' },
+  { name: 'PyQt', iconKey: 'pyqt' },
+  { name: 'AI Integration', iconKey: 'ai' },
   { name: 'HTML', iconKey: 'html' },
   { name: 'CSS', iconKey: 'css' },
   { name: 'Tailwind CSS', iconKey: 'tailwind' },
@@ -135,6 +152,7 @@ const technologyCatalog: TechnologySpec[] = [
   { name: 'GitHub Pages', iconKey: 'github' },
   { name: 'GitHub Actions', iconKey: 'githubActions' },
   { name: 'Microsoft Azure', iconKey: 'azure' },
+  { name: 'Azure AI', iconKey: 'azure' },
   { name: 'AWS Lambda', iconKey: 'aws' },
   { name: 'Amazon S3', iconKey: 'aws' },
   { name: 'Postman', iconKey: 'postman' },
@@ -157,6 +175,7 @@ const technologyCatalog: TechnologySpec[] = [
   { name: 'QA collaboration', iconKey: 'testing' },
   { name: 'Web development', iconKey: 'code' },
   { name: 'Web applications', iconKey: 'code' },
+  { name: 'Enterprise Software', iconKey: 'code' },
   { name: 'UI development', iconKey: 'react' },
   { name: 'Databases', iconKey: 'database' },
 ]
@@ -193,7 +212,7 @@ export const portfolio = {
   technologyCatalog,
   navigation: [
     { id: 'home', label: 'Home' },
-    { id: 'profile', label: 'Profile' },
+    { id: 'building', label: 'Building' },
     { id: 'experience', label: 'Experience' },
     { id: 'skills', label: 'Skills' },
     { id: 'projects', label: 'Projects' },
@@ -207,15 +226,45 @@ export const portfolio = {
     'AI Application Developer',
     'Enterprise Software Engineer',
   ],
-  snapshot: [
-    'Full-stack enterprise development',
-    'Professional development since August 2024',
-    'Project-based freelance work since 2022',
-    'MCA in Data Science & Machine Learning',
-    'Microsoft AZ-900 & AI-900 certified',
-    '300+ DSA problems solved',
-  ],
-  buildSteps: ['Understand', 'Design', 'Develop', 'Validate', 'Improve'],
+  currentFocus: [
+    {
+      title: 'AI Agents, Software & Services',
+      description:
+        'Currently building AI agents and AI-powered software and services, with a focus on practical integrations, reliable workflows, and useful product experiences.',
+      whyItMatters:
+        'Strengthens the ability to turn modern AI capabilities into dependable, production-focused software.',
+      status: 'In Development',
+      iconKey: 'agent',
+      technologies: ['AI Agents', 'C#', '.NET', 'Python', 'SQL', 'Enterprise Software'],
+    },
+    {
+      title: 'Enterprise Full-Stack Development',
+      description:
+        'Building and improving full-stack enterprise functionality across APIs, business logic, frontend workflows, database operations, permissions, batch processes, and data-driven features.',
+      whyItMatters:
+        'Connects reliable backend services, data rules, and user-facing workflows in maintainable enterprise features.',
+      status: 'Current Focus',
+      iconKey: 'dotnet',
+      technologies: [
+        'ASP.NET Core',
+        'Entity Framework',
+        'MSSQL',
+        'JavaScript',
+        'TypeScript',
+        'REST APIs',
+      ],
+    },
+    {
+      title: 'AI Engineering Growth',
+      description:
+        'Continuing to strengthen practical knowledge of AI agents, RAG, MCP, LLM integrations, cloud AI services, and production-focused AI application development.',
+      whyItMatters:
+        'Builds the practical foundation needed to deliver AI features responsibly inside production software.',
+      status: 'Learning',
+      iconKey: 'rag',
+      technologies: ['AI Agents', 'RAG', 'MCP', 'Azure AI', 'LLM Integration', 'FastAPI'],
+    },
+  ] satisfies CurrentFocusItem[],
   experiences: [
     {
       role: 'Junior Software Developer / Full-Stack Software Engineer',
@@ -428,70 +477,146 @@ export const portfolio = {
       },
     },
     {
-      title: 'Interactive Developer Portfolio',
-      shortTitle: 'DevStream Portfolio',
-      category: 'Frontend Platform',
-      status: 'Completed',
+      title: 'LivePplay',
+      shortTitle: 'LivePplay',
+      category: 'Sports Platform',
+      type: 'Web Application',
       featured: true,
       description:
-        'A responsive portfolio presenting full-stack and AI work through accessible motion and lightweight 3D.',
+        'A responsive web application for viewing live and current international cricket match scores from ICC competitions.',
       built:
-        'A data-driven single-page experience, procedural hero scene, case studies, SEO, and static deployment.',
-      stack: ['React', 'Vite', 'TypeScript', 'Tailwind CSS', 'Framer Motion', 'Three.js'],
-      outcome: 'Balanced recruiter-friendly scanning with progressive visual enhancement.',
+        'A sports-focused interface with reusable React components, responsive score cards, and clear match-status presentation.',
+      stack: ['React', 'JavaScript', 'TypeScript', 'Tailwind CSS', 'Vite'],
+      outcome:
+        'Strengthened component design and responsive presentation for information-rich sports interfaces.',
       caseStudy: {
-        problem: 'A broad engineering profile needs to be clear, credible, and memorable.',
-        context: 'A static portfolio optimized for recruiters and GitHub Pages.',
+        problem:
+          'Users need a clear, responsive way to view current international cricket match scores.',
+        context:
+          'LivePplay is a responsive cricket score platform designed for quick access to current international match information through a clean, sports-oriented interface.',
         responsibilities: [
-          'UX',
-          'Frontend architecture',
-          'Content modeling',
-          'Accessibility',
-          'Deployment',
+          'Current international cricket match score views',
+          'Responsive sports-focused interface',
+          'Reusable React components',
+          'Mobile-friendly score cards',
+          'Clear match-status presentation',
         ],
         approach: [
-          'Centralize typed content',
-          'Progressively enhance motion and 3D',
-          'Keep critical information in semantic HTML',
+          'Model score views as reusable React components',
+          'Use responsive Tailwind CSS layouts',
+          'Keep match status and score information easy to scan',
         ],
-        architecture: ['Typed data', 'React sections', 'Lazy 3D scene', 'GitHub Pages'],
-        challenges: ['3D performance', 'Responsive hierarchy', 'Missing resume asset'],
-        solution: 'A modular site with safe fallbacks and configuration-aware actions.',
-        learning: 'Visual polish works best when content and accessibility remain primary.',
-        future: 'Add the verified resume and automated browser checks.',
+        architecture: ['Web application', 'React components', 'Responsive score views'],
+        challenges: [
+          'Presenting match states clearly',
+          'Fitting score information on small screens',
+          'Keeping card structures reusable',
+        ],
+        solution:
+          'A component-based sports interface that keeps current match information readable across desktop and mobile devices.',
+        learning:
+          'Information-heavy interfaces benefit from reusable components and a strong responsive hierarchy.',
+        future:
+          'Continue refining accessibility, navigation, and match-state presentation as requirements evolve.',
       },
     },
     {
-      title: 'Enterprise Full-Stack Product Development',
-      shortTitle: 'Enterprise Product Work',
-      category: 'Professional Engineering',
-      status: 'Professional',
+      title: 'LifeOS',
+      shortTitle: 'LifeOS',
+      category: 'AI Productivity',
+      type: 'Web Application',
       featured: true,
       description:
-        'NDA-safe enterprise feature work spanning permissions, data workflows, exports, batch processing, GDPR, APIs, SQL, and frontend integrations.',
-      built: 'Maintainable full-stack functionality developed with QA and product collaboration.',
-      stack: ['C#', '.NET', 'MSSQL', 'REST APIs', 'TypeScript'],
-      outcome: 'Contributed reliable features while respecting confidential product details.',
+        'An AI-based life management web application for organising tasks, routines, goals, and personal activities in one place.',
+      built:
+        'Task, routine, goal, and everyday activity management in a Flask application with local SQLite persistence and a responsive Bootstrap interface.',
+      stack: ['Python', 'Flask', 'SQLite', 'Bootstrap', 'AI Integration'],
+      outcome:
+        'Explored how AI-assisted features can support a structured personal organisation workflow.',
+      caseStudy: {
+        problem:
+          'Daily tasks, routines, goals, and personal activities can become fragmented across separate workflows.',
+        context:
+          'LifeOS is an AI-powered life management system that brings personal organisation into one web application while exploring more useful and personalised assistance.',
+        responsibilities: [
+          'AI-assisted life management',
+          'Task and routine organisation',
+          'Personal goal tracking',
+          'Flask web application',
+          'SQLite data persistence',
+          'Responsive Bootstrap interface',
+        ],
+        approach: [
+          'Organise life-management features into focused application areas',
+          'Use Flask for web application workflows',
+          'Persist local application data with SQLite',
+          'Build responsive views with Bootstrap',
+        ],
+        architecture: ['Web application', 'Flask workflows', 'SQLite storage', 'Bootstrap interface'],
+        challenges: [
+          'Keeping different activity types organised',
+          'Maintaining clear data workflows',
+          'Introducing AI assistance without complicating core tasks',
+        ],
+        solution:
+          'A unified web interface for organising tasks, routines, goals, and other personal activities.',
+        learning:
+          'AI assistance is most useful when it supports a clear application workflow and understandable user controls.',
+        future:
+          'Expand configurable organisation workflows, validation, and automated test coverage.',
+      },
     },
     {
-      title: 'Freelance Websites & Web Applications',
-      shortTitle: 'Freelance Web Work',
-      category: 'Project-based Work',
-      status: 'Professional',
+      title: 'Nutrifit',
+      shortTitle: 'Nutrifit',
+      category: 'Health & Nutrition',
+      type: 'Desktop Application',
       featured: false,
       description:
-        'Project-based websites and applications shaped around practical client requirements.',
-      built: 'Requirements, UI, application logic, databases, testing, delivery, and support.',
-      stack: ['Web development', 'UI', 'Databases', 'Testing'],
-      outcome: 'Built experience carrying smaller projects from concept to completion.',
+        'A Python desktop application for managing nutrition, health information, and personal wellness-related records.',
+      built:
+        'A structured PyQt desktop interface for health and nutrition information with local SQLite data storage.',
+      stack: ['Python', 'PyQt', 'SQLite'],
+      outcome:
+        'Developed practical experience with desktop UI structure and local data persistence.',
+      caseStudy: {
+        problem:
+          'Personal nutrition and health-related information needs a structured place for organisation and tracking.',
+        context:
+          'Nutrifit is a desktop-based nutrition and health management system built with Python and PyQt, using SQLite for local data storage.',
+        responsibilities: [
+          'Nutrition and health information management',
+          'Desktop-based user interface',
+          'Local SQLite data storage',
+          'Structured personal health records',
+          'Python and PyQt implementation',
+        ],
+        approach: [
+          'Build a structured desktop interface with PyQt',
+          'Separate user-interface and data-management responsibilities',
+          'Store application records locally with SQLite',
+        ],
+        architecture: ['Desktop application', 'PyQt interface', 'Application logic', 'SQLite storage'],
+        challenges: [
+          'Organising related records clearly',
+          'Designing usable desktop navigation',
+          'Maintaining consistent local data',
+        ],
+        solution:
+          'A desktop interface for organising nutrition, health information, and personal wellness-related records.',
+        learning:
+          'Desktop applications benefit from clear information structure and predictable local persistence.',
+        future:
+          'Improve record validation, navigation, and configurable data-management options.',
+      },
     },
   ] as Project[],
   continueExploring: [
     {
-      title: 'Current Experience',
-      description: 'Enterprise full-stack engineering at EGDK.',
-      href: '#experience',
-      icon: 'career',
+      title: 'Currently Building',
+      description: 'Active engineering work and current learning.',
+      href: '#building',
+      icon: 'workflow',
     },
     {
       title: 'Technical Skills',
@@ -591,10 +716,15 @@ export const portfolio = {
       title: 'Career Journey',
       description: 'Explored professional experience.',
     },
+    {
+      id: 'builders-desk',
+      title: 'Builder’s Desk',
+      description: 'Viewed what Adhi is currently building.',
+    },
     { id: 'lets-connect', title: 'Let’s Connect', description: 'Reached the contact panel.' },
     {
-      id: 'profile-complete',
-      title: 'Profile Complete',
+      id: 'stream-complete',
+      title: 'DevStream Complete',
       description: 'Visited every main DevStream chapter.',
     },
   ] satisfies VisitorAchievement[],

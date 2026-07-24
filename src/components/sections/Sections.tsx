@@ -22,37 +22,88 @@ import { Reveal } from '../common/Reveal'
 import { SectionHeading } from '../common/SectionHeading'
 import { ProjectCaseStudy } from '../projects/ProjectCaseStudy'
 
-export function RecruiterSnapshot() {
+export function CurrentlyBuilding() {
   return (
-    <section id="profile" className="section profile-section wrap" aria-labelledby="profile-heading">
+    <section id="building" className="section current-focus-section wrap" aria-label="Currently Building">
       <SectionHeading
-        eyebrow="Quick profile"
-        title="The essential profile, ready to scan."
-        description="Verified facts for recruiters and engineering teams—also available from the hero’s quick profile."
+        eyebrow="Now Streaming"
+        title="Currently Building"
+        description="A focused view of active engineering work and the production skills I am strengthening now."
       />
-      <div className="snapshot" id="profile-heading">
-        {portfolio.snapshot.map((item, index) => (
-          <Reveal key={item} className="snapshot-item">
-            <strong>{String(index + 1).padStart(2, '0')}</strong>
-            <span>{item}</span>
+      <div className="current-focus-grid">
+        {portfolio.currentFocus.map((item, index) => (
+          <Reveal
+            className={`current-focus-card${index === 0 ? ' featured' : ''}`}
+            key={item.title}
+          >
+            <article tabIndex={0}>
+              <div className="current-focus-top">
+                <span className="current-focus-icon">
+                  <TechnologyIcon
+                    iconKey={item.iconKey}
+                    name={item.title}
+                    size={index === 0 ? 38 : 30}
+                    labelled
+                  />
+                </span>
+                <span className="current-focus-status">
+                  <i aria-hidden="true" />
+                  {item.status}
+                </span>
+              </div>
+              {index === 0 && (
+                <div className="focus-workbench" aria-hidden="true">
+                  <div className="focus-workbench-grid" />
+                  <div className="focus-connection horizontal" />
+                  <div className="focus-connection vertical" />
+                  <span className="focus-node focus-node-agent">
+                    <TechnologyIcon iconKey="agent" name="AI agent" size={32} />
+                    <b>AGENT</b>
+                    <small>BUILDING</small>
+                  </span>
+                  <span className="focus-node focus-node-dotnet">
+                    <TechnologyIcon iconKey="dotnet" name=".NET" size={21} />
+                    <small>.NET</small>
+                  </span>
+                  <span className="focus-node focus-node-api">
+                    <TechnologyIcon iconKey="api" name="API" size={21} />
+                    <small>API</small>
+                  </span>
+                  <span className="focus-node focus-node-data">
+                    <TechnologyIcon iconKey="database" name="Data services" size={21} />
+                    <small>DATA</small>
+                  </span>
+                  <div className="focus-build-status">
+                    <span>AI SERVICE PIPELINE</span>
+                    <i>
+                      <b />
+                    </i>
+                    <small>WORK IN PROGRESS</small>
+                  </div>
+                </div>
+              )}
+              <p className="current-focus-episode">NOW BUILDING / 0{index + 1}</p>
+              <h3>{item.title}</h3>
+              <p className="current-focus-description">{item.description}</p>
+              <div className="current-focus-why">
+                <strong>Why it matters</strong>
+                <span>{item.whyItMatters}</span>
+              </div>
+              <div className="tags">
+                {item.technologies.map((technology) => (
+                  <span key={technology}>
+                    <TechnologyIcon
+                      iconKey={getTechnologyIconKey(technology)}
+                      name={technology}
+                      size={16}
+                    />
+                    {technology}
+                  </span>
+                ))}
+              </div>
+            </article>
           </Reveal>
         ))}
-      </div>
-      <div className="about-grid">
-        <Reveal>
-          <p className="about-copy">{portfolio.personal.about}</p>
-        </Reveal>
-        <Reveal className="build-flow">
-          <h3>How I build</h3>
-          <div>
-            {portfolio.buildSteps.map((step, index) => (
-              <span key={step}>
-                {step}
-                {index < portfolio.buildSteps.length - 1 && <i>→</i>}
-              </span>
-            ))}
-          </div>
-        </Reveal>
       </div>
     </section>
   )
@@ -92,7 +143,7 @@ export function Experience() {
         {portfolio.experiences.map((item, index) => (
           <Reveal className="season-card" key={item.role}>
             <div className="season-number">
-              <span>Season {index + 2}</span>
+              <span>Season {index + 1}</span>
               <strong>{item.period}</strong>
             </div>
             <div className="season-content">
@@ -268,7 +319,9 @@ export function Projects() {
             </div>
             <div className="poster-overlay">
               <p>
-                {project.category} <i>•</i> {project.status}
+                {project.category}
+                <i>•</i>
+                {project.type ?? project.status}
               </p>
               <h3>{project.shortTitle}</h3>
               <span className="poster-summary">{project.description}</span>
