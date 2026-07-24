@@ -1,0 +1,131 @@
+import { X } from 'lucide-react'
+import { useEffect, useRef } from 'react'
+import { getTechnologyIconKey, type Project } from '../../data/portfolio'
+import { TechnologyIcon } from '../../lib/TechnologyIcon'
+
+export function ProjectCaseStudy({ project, close }: { project: Project; close: () => void }) {
+  const dialog = useRef<HTMLDivElement>(null)
+  const study = project.caseStudy
+
+  useEffect(() => {
+    const previous = document.activeElement as HTMLElement | null
+    dialog.current?.focus()
+    const onKey = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') close()
+      if (event.key === 'Tab' && dialog.current) {
+        const focusable = dialog.current.querySelectorAll<HTMLElement>('button, a')
+        if (!focusable.length) return
+        const first = focusable[0]
+        const last = focusable[focusable.length - 1]
+        if (event.shiftKey && document.activeElement === first) {
+          event.preventDefault()
+          last.focus()
+        } else if (!event.shiftKey && document.activeElement === last) {
+          event.preventDefault()
+          first.focus()
+        }
+      }
+    }
+    document.body.style.overflow = 'hidden'
+    document.addEventListener('keydown', onKey)
+    return () => {
+      document.body.style.overflow = ''
+      document.removeEventListener('keydown', onKey)
+      previous?.focus()
+    }
+  }, [close])
+
+  if (!study) return null
+
+  return (
+    <div
+      className="modal-backdrop"
+      onMouseDown={(event) => event.target === event.currentTarget && close()}
+    >
+      <div
+        className="case-modal"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="case-title"
+        tabIndex={-1}
+        ref={dialog}
+      >
+        <button className="modal-close" onClick={close} aria-label="Close case study">
+          <X />
+        </button>
+        <span className="eyebrow">Case study</span>
+        <h2 id="case-title">{project.title}</h2>
+        <p className="lead">{study.problem}</p>
+        <div className="case-meta">
+          <span>{project.type ?? project.category}</span>
+          {project.status && <span>{project.status}</span>}
+        </div>
+        <div className="tags case-technologies" aria-label="Technologies">
+          {project.stack.map((technology) => (
+            <span key={technology}>
+              <TechnologyIcon
+                iconKey={getTechnologyIconKey(technology)}
+                name={technology}
+                size={16}
+              />
+              {technology}
+            </span>
+          ))}
+        </div>
+        <div
+          className="architecture"
+          aria-label={`Technical flow: ${study.architecture.join(' to ')}`}
+        >
+          {study.architecture.map((node, index) => (
+            <span key={node}>
+              {node}
+              {index < study.architecture.length - 1 && <i>→</i>}
+            </span>
+          ))}
+        </div>
+        <div className="case-grid">
+          <article>
+            <h3>Overview</h3>
+            <p>{study.context}</p>
+          </article>
+          <article>
+            <h3>Solution</h3>
+            <p>{study.solution}</p>
+          </article>
+          <article>
+            <h3>Main features</h3>
+            <ul>
+              {study.responsibilities.map((item) => (
+                <li key={item}>{item}</li>
+              ))}
+            </ul>
+          </article>
+          <article>
+            <h3>Technical approach</h3>
+            <ul>
+              {study.approach.map((item) => (
+                <li key={item}>{item}</li>
+              ))}
+            </ul>
+          </article>
+          <article>
+            <h3>Engineering considerations</h3>
+            <ul>
+              {study.challenges.map((item) => (
+                <li key={item}>{item}</li>
+              ))}
+            </ul>
+          </article>
+          <article>
+            <h3>Engineering learnings</h3>
+            <p>{study.learning}</p>
+          </article>
+          <article>
+            <h3>Possible future improvements</h3>
+            <p>{study.future}</p>
+          </article>
+        </div>
+      </div>
+    </div>
+  )
+}
