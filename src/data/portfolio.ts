@@ -186,9 +186,9 @@ export const portfolio = {
     githubUrl: 'https://github.com/AdhiAR437',
     linkedinUrl: 'https://www.linkedin.com/in/adhi-avinash-rane-45375a1bb/',
     email: 'adhiar98@gmail.com',
-    resumePath: '/resume/Adhi_Avinash_Rane_Resume.pdf',
-    resumeEnabled: false,
-    resumeDownloadName: 'Adhi_Avinash_Rane_Resume.pdf',
+    resumePath: '/resume/AdhiAR_Resume.pdf',
+    resumeEnabled: true,
+    resumeDownloadName: 'AdhiAR_Resume.pdf',
   },
   technologyCatalog,
   navigation: [
