@@ -1,21 +1,439 @@
-import { Award, Check, Code2, Copy, ExternalLink, GraduationCap, Layers3, Mail, Sparkles } from 'lucide-react'
-import { useState } from 'react'
-import { motion } from 'framer-motion'
-import { isConfigured, portfolio, type Project } from '../../data/portfolio'
+import {
+  Check,
+  ChevronDown,
+  Copy,
+  Download,
+  ExternalLink,
+  Mail,
+  Search,
+} from 'lucide-react'
+import { AnimatePresence, motion } from 'framer-motion'
+import { useMemo, useState } from 'react'
+import {
+  getTechnologyIconKey,
+  portfolio,
+  type Project,
+  type SkillLevel,
+} from '../../data/portfolio'
+import { TechnologyIcon } from '../../lib/TechnologyIcon'
+import { ContentIcon } from '../common/ContentIcon'
+import { ContentRail } from '../common/ContentRail'
 import { Reveal } from '../common/Reveal'
 import { SectionHeading } from '../common/SectionHeading'
 import { ProjectCaseStudy } from '../projects/ProjectCaseStudy'
 
-export function RecruiterSnapshot() { return <section id="snapshot" className="snapshot wrap" aria-label="Recruiter snapshot">{portfolio.snapshot.map((item, index) => <Reveal key={item} className="snapshot-item"><strong>0{index + 1}</strong><span>{item}</span></Reveal>)}</section> }
+export function RecruiterSnapshot() {
+  return (
+    <section id="profile" className="section profile-section wrap" aria-labelledby="profile-heading">
+      <SectionHeading
+        eyebrow="Quick profile"
+        title="The essential profile, ready to scan."
+        description="Verified facts for recruiters and engineering teams—also available from the hero’s quick profile."
+      />
+      <div className="snapshot" id="profile-heading">
+        {portfolio.snapshot.map((item, index) => (
+          <Reveal key={item} className="snapshot-item">
+            <strong>{String(index + 1).padStart(2, '0')}</strong>
+            <span>{item}</span>
+          </Reveal>
+        ))}
+      </div>
+      <div className="about-grid">
+        <Reveal>
+          <p className="about-copy">{portfolio.personal.about}</p>
+        </Reveal>
+        <Reveal className="build-flow">
+          <h3>How I build</h3>
+          <div>
+            {portfolio.buildSteps.map((step, index) => (
+              <span key={step}>
+                {step}
+                {index < portfolio.buildSteps.length - 1 && <i>→</i>}
+              </span>
+            ))}
+          </div>
+        </Reveal>
+      </div>
+    </section>
+  )
+}
 
-export function About() { return <section id="about" className="section wrap"><SectionHeading eyebrow="About" title="Engineering across the whole product." description="Enterprise foundations, frontend craft, and applied AI—connected by practical problem solving."/><div className="about-grid"><Reveal><p className="about-copy">{portfolio.personal.about}</p></Reveal><Reveal className="build-flow"><h3>How I build</h3><div>{portfolio.buildSteps.map((step, index) => <span key={step}>{step}{index < portfolio.buildSteps.length - 1 && <i>→</i>}</span>)}</div></Reveal></div></section> }
+export function ContinueExploring() {
+  return (
+    <div className="wrap stream-section">
+      <ContentRail
+        title={portfolio.theme.exploreRailLabel}
+        description="Jump directly to the chapter most relevant to your review."
+        labelledBy="continue-heading"
+      >
+        {portfolio.continueExploring.map((item) => (
+          <a className="explore-card" href={item.href} key={item.title}>
+            <ContentIcon name={item.icon} />
+            <span>
+              <strong>{item.title}</strong>
+              <small>{item.description}</small>
+            </span>
+          </a>
+        ))}
+      </ContentRail>
+    </div>
+  )
+}
 
-export function Experience() { return <section id="experience" className="section wrap"><SectionHeading eyebrow="Experience" title="Professional work, end to end." description="Grounded contributions across enterprise products and project-based client work."/><div className="timeline">{portfolio.experiences.map((item) => <Reveal className="experience-card" key={item.role}><span className="timeline-dot"/><div className="card-top"><div><p className="period">{item.period}</p><h3>{item.role}</h3><p className="company">{item.company}</p></div></div><p>{item.summary}</p><ul>{item.highlights.map((point) => <li key={point}>{point}</li>)}</ul><div className="tags">{item.stack.map((tag) => <span key={tag}>{tag}</span>)}</div></Reveal>)}</div></section> }
+export function Experience() {
+  return (
+    <section id="experience" className="section wrap">
+      <SectionHeading
+        eyebrow={portfolio.theme.careerLabel}
+        title="Professional work, presented as career chapters."
+        description="The season metaphor adds structure; the dates, responsibilities, and employment facts remain literal."
+      />
+      <div className="season-timeline">
+        {portfolio.experiences.map((item, index) => (
+          <Reveal className="season-card" key={item.role}>
+            <div className="season-number">
+              <span>Season {index + 2}</span>
+              <strong>{item.period}</strong>
+            </div>
+            <div className="season-content">
+              <p className="company">{item.company}</p>
+              <h3>{item.role}</h3>
+              <p>{item.summary}</p>
+              <ul>
+                {item.highlights.map((point) => (
+                  <li key={point}>{point}</li>
+                ))}
+              </ul>
+              <div className="tags">
+                {item.stack.map((tag) => (
+                  <span key={tag}>
+                    <TechnologyIcon
+                      iconKey={getTechnologyIconKey(tag)}
+                      name={tag}
+                      size={16}
+                    />
+                    {tag}
+                  </span>
+                ))}
+              </div>
+            </div>
+          </Reveal>
+        ))}
+      </div>
+    </section>
+  )
+}
 
-export function Skills() { const [active, setActive] = useState('All'); const levels = ['All', 'Core', 'Working knowledge', 'Project exposure'] as const; const groups = portfolio.skills.filter((group) => active === 'All' || group.level === active); return <section id="skills" className="section wrap"><SectionHeading eyebrow="Capabilities" title="Tools chosen for the problem." description="Core professional skills are distinguished from working knowledge and project exposure—without arbitrary percentages."/><div className="filters" role="group" aria-label="Filter skill groups">{levels.map((level) => <button key={level} className={active === level ? 'active' : ''} onClick={() => setActive(level)} aria-pressed={active === level}>{level}</button>)}</div><motion.div layout className="skills-grid">{groups.map((group) => <motion.article layout className="skill-card" key={group.name}><div><Layers3 size={20}/><span>{group.level}</span></div><h3>{group.name}</h3><ul>{group.skills.map((skill) => <li key={skill}>{skill}</li>)}</ul></motion.article>)}</motion.div></section> }
+export function Skills() {
+  const [level, setLevel] = useState<'All' | SkillLevel>('All')
+  const [query, setQuery] = useState('')
+  const [expanded, setExpanded] = useState<string | null>('.NET & Backend')
+  const levels: Array<'All' | SkillLevel> = [
+    'All',
+    'Core',
+    'Working knowledge',
+    'Project exposure',
+  ]
+  const groups = useMemo(() => {
+    const search = query.trim().toLowerCase()
+    return portfolio.skills.filter(
+      (group) =>
+        (level === 'All' || group.level === level) &&
+        (!search ||
+          group.name.toLowerCase().includes(search) ||
+          group.skills.some((skill) => skill.toLowerCase().includes(search))),
+    )
+  }, [level, query])
 
-export function Projects() { const [selected, setSelected] = useState<Project | null>(null); return <section id="projects" className="section wrap"><SectionHeading eyebrow="Selected work" title="Products, prototypes, and practical systems." description="A mix of enterprise full-stack engineering and focused AI exploration."/><div className="projects-grid">{portfolio.projects.map((project) => <Reveal className={`project-card ${project.featured ? 'featured' : ''}`} key={project.title}><div className="project-meta"><span>{project.status}</span>{project.featured && <Sparkles size={17}/>}</div><h3>{project.title}</h3><p>{project.description}</p><p className="built"><strong>Built:</strong> {project.built}</p><div className="tags">{project.stack.map((tag) => <span key={tag}>{tag}</span>)}</div><p className="outcome"><strong>Outcome / learning:</strong> {project.outcome}</p><div className="project-actions">{project.caseStudy && <button onClick={() => setSelected(project)}>Read case study</button>}{project.github && <a href={project.github} target="_blank" rel="noreferrer"><Code2 size={16}/> Code</a>}{project.live && <a href={project.live} target="_blank" rel="noreferrer"><ExternalLink size={16}/> Live</a>}</div></Reveal>)}</div>{selected && <ProjectCaseStudy project={selected} close={() => setSelected(null)}/>}</section> }
+  return (
+    <section id="skills" className="section wrap">
+      <SectionHeading
+        eyebrow={portfolio.theme.skillsLabel}
+        title="Technology channels built around practical use."
+        description="Primary engineering tools lead each channel. Labels distinguish professional depth without invented percentages."
+      />
+      <div className="skill-toolbar">
+        <label className="skill-search">
+          <Search size={18} aria-hidden="true" />
+          <span className="sr-only">Search technologies</span>
+          <input
+            type="search"
+            value={query}
+            onChange={(event) => setQuery(event.target.value)}
+            placeholder="Search C#, React, RAG…"
+          />
+        </label>
+        <div className="filters" role="group" aria-label="Filter technology channels">
+          {levels.map((item) => (
+            <button
+              key={item}
+              className={level === item ? 'active' : ''}
+              onClick={() => setLevel(item)}
+              aria-pressed={level === item}
+            >
+              {item}
+            </button>
+          ))}
+        </div>
+      </div>
+      <motion.div layout className="channel-grid">
+        {groups.map((group) => {
+          const isExpanded = expanded === group.name
+          return (
+            <motion.article layout className="channel-card" key={group.name}>
+              <button
+                className="channel-summary"
+                onClick={() => setExpanded(isExpanded ? null : group.name)}
+                aria-expanded={isExpanded}
+              >
+                <span className="channel-icon">
+                  <ContentIcon name={group.icon} />
+                </span>
+                <span>
+                  <small>{group.level}</small>
+                  <strong>{group.name}</strong>
+                  <em>{group.description}</em>
+                </span>
+                <ChevronDown className={isExpanded ? 'rotated' : ''} />
+              </button>
+              <div className="primary-tech" aria-label={`Primary ${group.name} technologies`}>
+                {group.primarySkills.map((skill) => (
+                  <span key={skill}>
+                    <TechnologyIcon
+                      iconKey={getTechnologyIconKey(skill)}
+                      name={skill}
+                      size={19}
+                    />
+                    {skill}
+                  </span>
+                ))}
+              </div>
+              <AnimatePresence initial={false}>
+                {isExpanded && (
+                  <motion.ul
+                    className="channel-details"
+                    initial={{ height: 0, opacity: 0 }}
+                    animate={{ height: 'auto', opacity: 1 }}
+                    exit={{ height: 0, opacity: 0 }}
+                  >
+                    {group.skills.map((skill) => (
+                      <li key={skill}>
+                        <TechnologyIcon
+                          iconKey={getTechnologyIconKey(skill)}
+                          name={skill}
+                          size={18}
+                        />
+                        {skill}
+                      </li>
+                    ))}
+                  </motion.ul>
+                )}
+              </AnimatePresence>
+            </motion.article>
+          )
+        })}
+      </motion.div>
+      {!groups.length && <p className="empty-state">No technology channels match that search.</p>}
+    </section>
+  )
+}
 
-export function Education() { return <section id="education" className="section wrap"><SectionHeading eyebrow="Learning" title="Education, credentials, and progression."/><div className="education-grid"><div>{portfolio.education.map((item) => <Reveal className="education-card" key={item.degree}><GraduationCap/><div><p className="period">{item.period}</p><h3>{item.degree}</h3><p>{item.school}</p>{item.detail && <span>{item.detail}</span>}</div></Reveal>)}</div><div>{portfolio.certifications.map((item) => <Reveal className="cert-card" key={item.title}><Award/><div><h3>{item.title}</h3><p>{item.detail}</p>{item.credentialUrl && <a href={item.credentialUrl}>View credential</a>}</div></Reveal>)}</div></div><div className="journey"><h3>Engineering journey</h3>{portfolio.journey.map((step) => <span key={step}>{step}</span>)}</div></section> }
+export function Projects() {
+  const [selected, setSelected] = useState<Project | null>(null)
+  const openCaseStudy = (project: Project) => {
+    setSelected(project)
+    window.dispatchEvent(new CustomEvent('devstream:achievement', { detail: 'project-reviewer' }))
+  }
 
-export function Contact() { const [copied, setCopied] = useState(false); const emailReady = isConfigured(portfolio.contact.email); const linkedinReady = isConfigured(portfolio.contact.linkedinUrl); const copy = async () => { if (!emailReady) return; await navigator.clipboard.writeText(portfolio.contact.email); setCopied(true); window.setTimeout(() => setCopied(false), 1800) }; return <section id="contact" className="section wrap"><Reveal className="contact-panel"><span className="eyebrow">Contact</span><h2>Let’s build something useful.</h2><p>Have a full-stack, .NET, AI, SDK, or software engineering opportunity? Let’s connect.</p><div className="contact-actions">{emailReady && <><a className="button primary" href={`mailto:${portfolio.contact.email}`}><Mail size={18}/> Email me</a><button className="button secondary" onClick={copy}>{copied ? <Check size={18}/> : <Copy size={18}/>} {copied ? 'Copied' : 'Copy email'}</button></>} {linkedinReady && <a className="button secondary" href={portfolio.contact.linkedinUrl} target="_blank" rel="noreferrer">LinkedIn</a>}<a className="button secondary" href={portfolio.contact.githubUrl} target="_blank" rel="noreferrer"><Code2 size={18}/> GitHub</a>{portfolio.contact.resumeEnabled && <a className="button secondary" href={portfolio.contact.resumePath} download>Download resume</a>}</div>{!emailReady && !linkedinReady && <p className="config-note">Email and LinkedIn details are being configured. GitHub is available now.</p>}</Reveal></section> }
+  return (
+    <section id="projects" className="section wrap">
+      <ContentRail
+        title={portfolio.theme.projectRailLabel}
+        description="Featured releases across enterprise engineering, applied AI, and frontend delivery."
+        labelledBy="projects-heading"
+      >
+        {portfolio.projects.map((project, index) => (
+          <article
+            className={`poster-card poster-${(index % 4) + 1}`}
+            key={project.title}
+            tabIndex={0}
+          >
+            <div className="poster-art" aria-hidden="true">
+              <span>{String(index + 1).padStart(2, '0')}</span>
+              <TechnologyIcon
+                iconKey={getTechnologyIconKey(project.stack[0])}
+                name={project.stack[0]}
+                size={54}
+              />
+            </div>
+            <div className="poster-overlay">
+              <p>
+                {project.category} <i>•</i> {project.status}
+              </p>
+              <h3>{project.shortTitle}</h3>
+              <span className="poster-summary">{project.description}</span>
+              <div className="poster-stack">
+                {project.stack.slice(0, 4).map((item) => (
+                  <small key={item}>
+                    <TechnologyIcon
+                      iconKey={getTechnologyIconKey(item)}
+                      name={item}
+                      size={15}
+                    />
+                    {item}
+                  </small>
+                ))}
+              </div>
+              <div className="poster-actions">
+                {project.caseStudy && (
+                  <button onClick={() => openCaseStudy(project)}>Case study</button>
+                )}
+                {project.github && (
+                  <a
+                    href={project.github}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={`Open ${project.title} source code in a new tab`}
+                  >
+                    <TechnologyIcon iconKey="github" name="GitHub" size={15} /> Code
+                    <ExternalLink size={14} />
+                  </a>
+                )}
+              </div>
+            </div>
+          </article>
+        ))}
+      </ContentRail>
+      {selected && <ProjectCaseStudy project={selected} close={() => setSelected(null)} />}
+    </section>
+  )
+}
+
+export function Journey() {
+  return (
+    <section id="journey" className="section wrap">
+      <SectionHeading
+        eyebrow="Origin stories & milestones"
+        title="The foundation behind the engineering journey."
+        description="Education, certifications, and progression—presented without hidden scores or inflated claims."
+      />
+      <div className="career-seasons">
+        {portfolio.careerSeasons.map((item) => (
+          <a className="career-season" href={item.href} key={item.season}>
+            <span>{item.season}</span>
+            <small>{item.period}</small>
+            <h3>{item.title}</h3>
+            <p>{item.description}</p>
+          </a>
+        ))}
+      </div>
+      <div className="education-grid">
+        <div>
+          <h3 className="subsection-title">Education</h3>
+          {portfolio.education.map((item) => (
+            <Reveal className="education-card" key={item.degree}>
+              <ContentIcon name="education" />
+              <div>
+                <p className="period">{item.period}</p>
+                <h3>{item.degree}</h3>
+                <p>{item.school}</p>
+                {item.detail && <span>{item.detail}</span>}
+              </div>
+            </Reveal>
+          ))}
+        </div>
+        <div>
+          <h3 className="subsection-title">Unlocked professional milestones</h3>
+          {portfolio.certifications.map((item) => (
+            <Reveal className="cert-card" key={item.title}>
+              <ContentIcon name="award" />
+              <div>
+                <h3>{item.title}</h3>
+                <p>{item.detail}</p>
+              </div>
+            </Reveal>
+          ))}
+        </div>
+      </div>
+    </section>
+  )
+}
+
+export function Contact() {
+  const [copied, setCopied] = useState(false)
+  const [resumeNotice, setResumeNotice] = useState(false)
+  const copy = async () => {
+    await navigator.clipboard.writeText(portfolio.contact.email)
+    setCopied(true)
+    window.setTimeout(() => setCopied(false), 1800)
+  }
+
+  return (
+    <section id="contact" className="section wrap">
+      <Reveal className="contact-panel">
+        <span className="stream-label">Final chapter</span>
+        <h2>Ready to connect?</h2>
+        <p>
+          Have a full-stack, .NET, AI, SDK, or software engineering opportunity? Let’s talk
+          about the work.
+        </p>
+        <div className="contact-actions">
+          <a
+            className="button primary"
+            href={`mailto:${portfolio.contact.email}`}
+            aria-label={`Email Adhi Avinash Rane at ${portfolio.contact.email}`}
+          >
+            <Mail size={18} /> Email me
+          </a>
+          <button className="button secondary" onClick={copy}>
+            {copied ? <Check size={18} /> : <Copy size={18} />}
+            {copied ? 'Email copied' : 'Copy email'}
+          </button>
+          <a
+            className="button secondary"
+            href={portfolio.contact.linkedinUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Open Adhi Avinash Rane’s LinkedIn profile in a new tab"
+          >
+            <TechnologyIcon iconKey="linkedin" name="LinkedIn" size={19} /> LinkedIn
+          </a>
+          <a
+            className="button secondary"
+            href={portfolio.contact.githubUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Open Adhi Avinash Rane’s GitHub profile in a new tab"
+          >
+            <TechnologyIcon iconKey="github" name="GitHub" size={19} /> GitHub
+          </a>
+          {portfolio.contact.resumeEnabled ? (
+            <a
+              className="button secondary"
+              href={portfolio.contact.resumePath}
+              download={portfolio.contact.resumeDownloadName}
+            >
+              <Download size={18} /> Resume
+            </a>
+          ) : (
+            <button
+              className="button secondary"
+              onClick={() => {
+                setResumeNotice(true)
+                window.setTimeout(() => setResumeNotice(false), 2200)
+              }}
+            >
+              <Download size={18} /> Resume
+            </button>
+          )}
+        </div>
+        <p className="contact-address">{portfolio.contact.email}</p>
+        {resumeNotice && (
+          <p className="inline-notice" role="status">
+            Resume download will be enabled when the verified PDF is supplied.
+          </p>
+        )}
+      </Reveal>
+    </section>
+  )
+}

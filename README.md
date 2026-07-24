@@ -1,6 +1,6 @@
-# Adhi Avinash Rane — Developer Portfolio
+# DevStream — Adhi Avinash Rane
 
-A production-ready, static portfolio for a Full-Stack .NET & AI Engineer. It presents enterprise experience, applied-AI projects, education, credentials, and contact paths in a recruiter-friendly, accessible interface.
+A cinematic, production-ready portfolio for a Full-Stack .NET & AI Engineer. DevStream presents enterprise experience, applied-AI projects, education, credentials, and contact paths as accessible engineering chapters.
 
 ## Screenshots
 
@@ -12,15 +12,17 @@ Add current desktop and mobile captures here after deployment:
 ## Features
 
 - Data-driven content from one typed configuration file
-- Responsive navigation with active-section tracking
-- Recruiter snapshot, experience timeline, filtered skills, and project case studies
-- Lazy React Three Fiber hero with static, mobile, reduced-motion, and WebGL fallbacks
+- Cinematic navigation, recruiter quick profile, career seasons, content rails, and case studies
+- Searchable and expandable technology channels with accurate depth labels
+- Lazy AI Engineering Command Center with connected 3D systems, a matching loader, and a premium static fallback
+- Typed Simple Icons registry for technology, social, and brand marks with guaranteed monogram fallbacks
+- Visitor-only exploration progress, achievement notices, and a `Ctrl`/`Cmd` + `K` command palette
 - Accessible dialog behavior, keyboard focus, semantic landmarks, and visible focus states
 - SEO metadata, JSON-LD, sitemap, social preview, and GitHub Pages workflow
 
 ## Technology
 
-React, Vite, TypeScript, Tailwind CSS, Framer Motion, Three.js, React Three Fiber, Drei, Lucide React, ESLint, Prettier, and Vitest.
+React, Vite, TypeScript, Tailwind CSS, Framer Motion, Three.js, React Three Fiber, Drei, Lucide React, React Icons, ESLint, Prettier, and Vitest.
 
 ## Structure
 
@@ -61,7 +63,7 @@ Edit `src/data/portfolio.ts`; normal updates should not require component change
 
 To add a project, append a typed object to `portfolio.projects`. Include `caseStudy` to display the case-study action; omit unconfigured `github` or `live` URLs so broken buttons are never rendered.
 
-Set `linkedinUrl` and `email` when verified. Values beginning with `ADD_` are automatically hidden from the public interface.
+Verified LinkedIn and email details are configured centrally. Update them only in `src/data/portfolio.ts`; components, mail actions, copy-email behavior, and structured data consume those values.
 
 ### Add the resume
 
@@ -83,12 +85,12 @@ Until then, all resume controls remain hidden. Replace `src/components/three/Her
 
 - Blank assets on a project page: confirm the workflow-provided `VITE_BASE_PATH` includes a trailing slash.
 - Resume button missing: add the verified PDF and enable it in the data file.
-- 3D unavailable: this is expected on small screens, reduced-motion devices, or without WebGL; the HTML/CSS fallback appears automatically.
+- 3D unavailable: this is expected on small screens, reduced-motion devices, or without WebGL; the matching HTML/CSS workspace appears automatically.
 - PowerShell blocks `npm.ps1`: run `npm.cmd` instead.
 
 ## Performance and accessibility
 
-The 3D bundle is dynamically imported, render density is capped, motion honors `prefers-reduced-motion`, and essential content never depends on WebGL. The site uses semantic HTML, a skip link, focus-visible styles, keyboard navigation, an Escape-close/focus-trapped modal, accessible labels, and high-contrast text. Validate final deployment with Lighthouse and current Chrome, Edge, Firefox, Safari, Mobile Chrome, and Mobile Safari.
+The command-center bundle is dynamically imported, render density is capped, particle count is limited, and off-screen animation switches to on-demand rendering. A matching command-center loader crossfades into the first rendered frame without changing dimensions. Motion honors `prefers-reduced-motion`; low-memory, data-saving, mobile, and non-WebGL devices receive the static command center. Essential content never depends on WebGL or hover. The site uses semantic HTML, a skip link, focus-visible styles, keyboard-accessible rails, focus-trapped dialogs, accessible icon labels, and high-contrast text. Validate final deployment with Lighthouse and current Chrome, Edge, Firefox, Safari, Mobile Chrome, and Mobile Safari.
 
 ## License
 

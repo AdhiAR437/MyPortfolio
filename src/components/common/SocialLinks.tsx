@@ -1,11 +1,35 @@
-import { Code2, Link, Mail } from 'lucide-react'
-import { isConfigured, portfolio } from '../../data/portfolio'
+import { Mail } from 'lucide-react'
+import { portfolio } from '../../data/portfolio'
+import { TechnologyIcon } from '../../lib/TechnologyIcon'
 
 export function SocialLinks() {
-  const links = [
-    { label: 'GitHub profile', url: portfolio.contact.githubUrl, icon: Code2 },
-    { label: 'LinkedIn profile', url: portfolio.contact.linkedinUrl, icon: Link },
-    { label: 'Send email', url: `mailto:${portfolio.contact.email}`, icon: Mail, configured: isConfigured(portfolio.contact.email) },
-  ].filter((link) => link.configured ?? isConfigured(link.url))
-  return <div className="social-links">{links.map(({ label, url, icon: Icon }) => <a key={label} href={url} aria-label={label} target={url.startsWith('http') ? '_blank' : undefined} rel="noreferrer"><Icon size={19} /></a>)}</div>
+  return (
+    <div className="social-links">
+      <a
+        href={portfolio.contact.githubUrl}
+        aria-label="Open Adhi Avinash Rane’s GitHub profile in a new tab"
+        title="GitHub"
+        target="_blank"
+        rel="noreferrer noopener"
+      >
+        <TechnologyIcon iconKey="github" name="GitHub" size={21} />
+      </a>
+      <a
+        href={portfolio.contact.linkedinUrl}
+        aria-label="Open Adhi Avinash Rane’s LinkedIn profile in a new tab"
+        title="LinkedIn"
+        target="_blank"
+        rel="noreferrer noopener"
+      >
+        <TechnologyIcon iconKey="linkedin" name="LinkedIn" size={21} />
+      </a>
+      <a
+        href={`mailto:${portfolio.contact.email}`}
+        aria-label={`Email Adhi Avinash Rane at ${portfolio.contact.email}`}
+        title="Email"
+      >
+        <Mail size={20} aria-hidden="true" />
+      </a>
+    </div>
+  )
 }
