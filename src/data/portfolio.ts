@@ -205,7 +205,7 @@ export const portfolio = {
     githubUrl: 'https://github.com/AdhiAR437',
     linkedinUrl: 'https://www.linkedin.com/in/adhi-avinash-rane-45375a1bb/',
     email: 'adhiar98@gmail.com',
-    resumePath: '/resume/AdhiAR_Resume.pdf',
+    resumePath: `${import.meta.env.BASE_URL}resume/AdhiAR_Resume.pdf`,
     resumeEnabled: true,
     resumeDownloadName: 'AdhiAR_Resume.pdf',
   },
