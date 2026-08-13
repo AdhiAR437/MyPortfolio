@@ -11,6 +11,13 @@ describe('portfolio configuration', () => {
     expect(portfolio.contact.email).toMatch(/^[^\s@]+@[^\s@]+\.[^\s@]+$/)
   })
 
+  it('resolves the resume from the configured Vite base path', () => {
+    expect(portfolio.contact.resumePath).toBe(
+      `${import.meta.env.BASE_URL}resume/AdhiAR_Resume.pdf`,
+    )
+    expect(portfolio.contact.resumeDownloadName).toBe('AdhiAR_Resume.pdf')
+  })
+
   it('keeps every navigation destination unique', () => {
     const ids = portfolio.navigation.map(({ id }) => id)
     expect(new Set(ids).size).toBe(ids.length)
